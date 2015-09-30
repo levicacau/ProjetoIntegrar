@@ -1,7 +1,6 @@
 package poder.ufac.br.projetointegrar;
 
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 public class AdapterImg extends PagerAdapter {
     private Context context;
     private int[] imgs;
-    private int[] audio;
 
     public AdapterImg(Context context, int[] imgs){
         this.context = context;
@@ -30,10 +28,9 @@ public class AdapterImg extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object obj) {
         // TODO Auto-generated method stub
-//        Log.i("Script", "view == obj: "+((view == obj) ? "1" : "0"));
-//        Log.i("Script", "view == ((TextView) obj).getParent(): "+((view == ((TextView) obj).getParent()) ? "1" : "0"));
-
-        return view == obj;
+        Log.i("Script", "view == obj: "+((view == obj) ? "1" : "0"));
+        Log.i("Script", "view == ((TextView) obj).getParent(): "+((view == ((TextView) obj).getParent()) ? "1" : "0"));
+        return view == ((TextView) obj).getParent();
     }
 
     @Override
@@ -50,18 +47,18 @@ public class AdapterImg extends PagerAdapter {
         ll.addView(iv);
 
         TextView tv = new TextView(context);
-        tv.setText("Carro " + (position + 1));
+        tv.setText("Carro "+(position +1));
         ll.addView(tv);
-//        Log.i("Script", "Build: Carro: "+(position + 1));
 
-        return(ll);
+        Log.i("Script", "Build: Carro: " + (position + 1));
+
+        return(tv);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object view){
-//        Log.i("Script", "Destroy: Carro: "+(position + 1));
-//        container.removeView((View)((TextView)view).getParent());
-        container.removeView((View)view);
+        //Log.i("Script", "Destroy: Carro: "+(position + 1));
+        container.removeView((View)((TextView)view).getParent());
     }
 
 }

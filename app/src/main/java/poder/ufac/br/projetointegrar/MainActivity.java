@@ -42,33 +42,32 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewPager vp = (ViewPager) findViewById(R.id.viewPager);
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-//        vp.setLayoutParams(lp);
+        ViewPager vp = new ViewPager(this); //(ViewPager) findViewById(R.id.viewPager);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        vp.setLayoutParams(lp);
 
         vp.setAdapter(new AdapterImg(this, escovando_dentes));
 
-//        vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//
-//            @Override
-//            public void onPageSelected(int arg0) {
-//                Log.i("Script", "onPageSelected()");
-//            }
-//
-//            @Override
-//            public void onPageScrolled(int arg0, float arg1, int arg2) {
-//                Log.i("Script", "onPageScrolled()");
-//
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int arg0) {
-//                Log.i("Script", "onPageScrollStateChanged()");
-//            }
-//        });
+        vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-//        LinearLayout ll = (LinearLayout) findViewById(R.id.LinearLayout1);
-//        ll.addView(vp);
+            @Override
+            public void onPageSelected(int arg0) {
+                Log.i("Script", "onPageSelected()");
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                Log.i("Script", "onPageScrolled()");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+                Log.i("Script", "onPageScrollStateChanged()");
+            }
+        });
+
+        LinearLayout ll = (LinearLayout) findViewById(R.id.LinearLayout1);
+        ll.addView(vp);
     }
 
 }
